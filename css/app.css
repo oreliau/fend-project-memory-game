@@ -2,6 +2,11 @@ html {
     box-sizing: border-box;
 }
 
+img, embed, object, video { max-width: 100%; }
+
+nav a, button { min-with: >48px;
+    min-height: >48px; }
+
 *,
 *::before,
 *::after {
