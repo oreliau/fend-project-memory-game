@@ -123,29 +123,30 @@ cards[i].addEventListener("click", function() {
 			return move;;};
 	};
 
-if(show.length = 14){
+	if(show.length = 14){
 
-		if(show[12].innerHTML === show[13].innerHTML){
-		show[12].classList.add("match");
-		show[13].classList.add("match")
-			move += 1;
-			return move;}
+			if(show[12].innerHTML === show[13].innerHTML){
+			show[12].classList.add("match");
+			show[13].classList.add("match")
+				move += 1;
+				return move;}
 
-		else{setTimeout(function(){show[12].classList.remove("show", "open");
-			show[13].classList.remove("show", "open")}, 500)
-			move += 1;
-			return move;;};
-	};
+			else{setTimeout(function(){show[12].classList.remove("show", "open");
+				show[13].classList.remove("show", "open")}, 500)
+				move += 1;
+				return move;;};
+		};
 
-if(show.length = 16){
+	if(show.length = 16){
 
-		if(show[14].innerHTML === show[15].innerHTML){
-		show[14].classList.add("match");
-		show[15].classList.add("match");
-			move += 1;
-			return move;
-	}
-	};
+			if(show[14].innerHTML === show[15].innerHTML){
+			show[14].classList.add("match");
+			show[15].classList.add("match");
+				move += 1;
+				return move;
+			fu
+		}
+		};
 
 
 });
@@ -168,8 +169,9 @@ function shuffle(array) {
 }
 
  /*
-  * THe timer
+  * This is timer
   */
+
 var startTime = 0
 var start = 0
 var end = 0
@@ -197,7 +199,7 @@ function chrono(){
 	else if(msec < 100){
 		msec = "0" +msec
 	}
-	document.getElementById("chronotime").value = hr + ":" + min + ":" + sec + ":" + msec
+	document.getElementById("chronotime").value = hr + ":" + min + ":" + sec
 	timerID = setTimeout("chrono()", 10)
 }
 function chronoStart(){
@@ -205,8 +207,41 @@ function chronoStart(){
 	chrono()
 };
 
-
+/*
+ *This is Move Counter
+ */
 deck.addEventListener('click', function(event){
 	 event.preventDefault();
-	count.insertAdjacentHTML("beforeend", String(move));
+	count.innerHTML = `number of moves : ${move}`;
 	});
+
+/*
+ *Star Rating
+ */
+ /*Selector of start*/
+const stars = document.querySelector(".stars");
+
+const star1 = document.querySelector(".star1").firstElementChild;
+const star2 = document.querySelector(".star2").firstElementChild;
+const star3 = document.querySelector(".star3").firstElementChild;
+
+deck.addEventListener('click', function(){
+	difficult();
+});
+restart.addEventListener('click', function(){
+	difficult();
+});
+
+function difficult(){
+	if (move >= 20){
+		star3.style.color = "grey";
+	}
+	else if (move >= 30){
+		star2.style.color = "grey";
+	}
+	else if (move >= 40){
+		star1.style.color ="grey"
+	};
+};
+
+
