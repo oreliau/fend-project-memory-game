@@ -2,6 +2,9 @@ html {
     box-sizing: border-box;
 }
 
+/*
+ *Make it responsive on small device
+ */;
 img, embed, object, video { max-width: 100%; }
 
 nav a, button { min-with: >48px;
@@ -24,6 +27,7 @@ body {
 body {
     background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
+    max-width: 100%;
 }
 
 .container {
