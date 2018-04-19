@@ -132,3 +132,7 @@ h1 {
     max-width: 100%;
     font-weight: 300;
 }
+
+.utili{
+    display: none;
+}

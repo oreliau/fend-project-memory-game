@@ -241,6 +241,8 @@ function chronoStart(){
 	chrono()
 };
 chronoStart();
+
+
 /*
  *This is Move Counter
  */
