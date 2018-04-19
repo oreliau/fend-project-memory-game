@@ -13,7 +13,7 @@ let count = document.querySelector(".move");
 /*
  *This function close cards and shuffle the game
  */
- window.addEventListener("load", function reset(){
+function reset(){
 	for(let i = 0 ; i < cards.length; i++){
 		cards[i].classList.remove("match", "open", "show");
 	}
@@ -26,26 +26,13 @@ let count = document.querySelector(".move");
 	}
 
 	move = 0;
-	count.innerHTML = `number of moves : ${move}`;
-
+	count.innerHTML = `moves : ${move}`;
 	chronoStart();
-});
+}
 
-restart.addEventListener('click', function reset(){
-	for(let i = 0 ; i < cards.length; i++){
-		cards[i].classList.remove("match", "open", "show");
-	}
+ window.addEventListener("load", reset);
 
-	const rep = shuffle(array);
-
-	for(let j = 0; j < cards.length; j++){
-		const replace = document.innerHTML ="<i class =\"" + rep[j] + "\"></i>";
-		cards[j].firstElementChild.outerHTML = replace;
-	}
-
-	move = 0;
-	count.innerHTML = `number of moves : ${move}`;
-});
+restart.addEventListener('click', reset);
 
 
 /*
@@ -283,7 +270,7 @@ function chronoStop(){
  */
 deck.addEventListener('click', function(){
 
-	count.innerHTML = `number of moves : ${move}`;
+	count.innerHTML = `moves : ${move}`;
 	});
 
 /*
@@ -307,26 +294,15 @@ restart.addEventListener('click', function(){
  *change star if you do to much move
  */
 function difficult(){
-	if(move < 20){
-		star1.style.color = "black";
-		star2.style.color = "black";
-		star3.style.color = "black";
-	}
-	else if (move < 30){
-		star3.style.color = "grey";
-		star1.style.color = "black";
-		star2.style.color = "black";
-	}
-	else if (move < 40){
-		star3.style.color = "grey";
-		star2.style.color = "grey";
-		star1.style.color = "black";
-	}
-	else{
-		star1.style.color ="grey"
-		star2.style.color = "grey";
-		star3.style.color = "grey";
-	};
+    if(move > 20 && move < 30 ){
+        star3.style.color = "grey";
+    }
+    else if (move > 30 && move < 40){
+        star2.style.color = "grey";
+    }
+    else if (move > 40){
+        star1.style.color ="grey"
+    }
 };
 
 
@@ -348,6 +324,7 @@ let popup = function final(){
 	Your level is : ${level} stars <br>`;
 	addbutton();
 };
+
 
 /*
  * function to get the value of the level
@@ -373,6 +350,7 @@ function lvl(){
 	};
 };
 
+
 /*
  * function for creat button
  */
@@ -384,7 +362,7 @@ function addbutton(){
 	button.className="button";
 	congrat.appendChild(button);
 	const mybutton = document.getElementsByClassName("button");
-	button.addEventListener("click",function(){again();});
+	button.addEventListener("click",again);
 	};
 
 
@@ -395,19 +373,6 @@ function addbutton(){
 
 
 function again(){
-	for(let i = 0 ; i < cards.length; i++){
-		cards[i].classList.remove("match", "open", "show");
-	}
-
-	const rep = shuffle(array);
-
-	for(let j = 0; j < cards.length; j++){
-		const replace = document.innerHTML ="<i class =\"" + rep[j] + "\"></i>";
-		cards[j].firstElementChild.outerHTML = replace;
-	}
-
-	move = 0;
-	count.innerHTML = `number of moves : ${move}`;
+	reset();
 	congrat.style.display = "none";
-	chronoStart();
 };
