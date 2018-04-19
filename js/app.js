@@ -27,6 +27,8 @@ let count = document.querySelector(".move");
 
 	move = 0;
 	count.innerHTML = `number of moves : ${move}`;
+
+	chronoStart();
 });
 
 restart.addEventListener('click', function reset(){
@@ -212,7 +214,15 @@ var start = 0
 var end = 0
 var diff = 0
 var timerID = 0
+
 restart.addEventListener('click', chronoStart);
+chronoStart();
+
+var startTime = 0
+var start = 0
+var end = 0
+var diff = 0
+var timerID = 0
 function chrono(){
 	end = new Date()
 	diff = end - start
@@ -233,14 +243,39 @@ function chrono(){
 	else if(msec < 100){
 		msec = "0" +msec
 	}
-	document.getElementById("chronotime").value = hr + ":" + min + ":" + sec
+	document.getElementById("chronotime").innerHTML = hr + ":" + min + ":" + sec + ":" + msec
 	timerID = setTimeout("chrono()", 10)
 }
 function chronoStart(){
+	document.chronoForm.startstop.value = "stop!"
+	document.chronoForm.startstop.onclick = chronoStop
+	document.chronoForm.reset.onclick = chronoReset
 	start = new Date()
 	chrono()
-};
-chronoStart();
+}
+function chronoContinue(){
+	document.chronoForm.startstop.value = "stop!"
+	document.chronoForm.startstop.onclick = chronoStop
+	document.chronoForm.reset.onclick = chronoReset
+	start = new Date()-diff
+	start = new Date(start)
+	chrono()
+}
+function chronoReset(){
+	document.getElementById("chronotime").innerHTML = "0:00:00:000"
+	start = new Date()
+}
+function chronoStopReset(){
+	document.getElementById("chronotime").innerHTML = "0:00:00:000"
+	document.chronoForm.startstop.onclick = chronoStart
+}
+function chronoStop(){
+	document.chronoForm.startstop.value = "start!"
+	document.chronoForm.startstop.onclick = chronoContinue
+	document.chronoForm.reset.onclick = chronoStopReset
+	clearTimeout(timerID)
+}
+
 
 
 /*
@@ -299,7 +334,6 @@ function difficult(){
  *pop up
  */
 const congrat = document.querySelector(".congrat");
-const finalTime = document.querySelector("#chronotime").value;
 
 deck.addEventListener('click', function(){
 	const match = document.querySelectorAll('.match');
@@ -310,7 +344,7 @@ let popup = function final(){
 	congrat.style.display = "initial";
 	lvl();
 	congrat.innerHTML = `Well done!!! <br>
-	You did it in : ${finalTime} <br>
+	You did it in : ${document.getElementById("chronotime").innerHTML} <br>
 	Your level is : ${level} stars <br>`;
 	addbutton();
 };
@@ -375,4 +409,5 @@ function again(){
 	move = 0;
 	count.innerHTML = `number of moves : ${move}`;
 	congrat.style.display = "none";
+	chronoStart();
 };

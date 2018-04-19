@@ -81,13 +81,16 @@
                 <i class="fa fa-cube"></i>
             </li>
         </ul>
+        
         <div class="utili">
-        <form name="chronoForm" class="chrono">
-                <input type="text" name="chronotime" id="chronotime" value="0:00:00:00"/>
+        <span id="chronotime">0:00:00:00</span>
+        <form name="chronoForm">
+            <input type="button" name="startstop" value="start!" onClick="chronoStart()" />
+            <input type="button" name="reset" value="reset!" onClick="chronoReset()" />
         </form>
 
         <p class="move">number of move</p>
-    </div>
+        </div>
     </div>
 
     <div class="congrat" id="modal"></div>
