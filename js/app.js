@@ -1,19 +1,43 @@
+//Hi welcome in my javascript game!
+
+
+
 let cards = document.querySelectorAll(".card");
-let array = ["fa fa-diamond","fa fa-paper-plane-o","fa fa-anchor",
-"fa fa-bolt","fa fa-cube","fa fa-anchor","fa fa-leaf",
-"fa fa-bicycle","fa fa-diamond","fa fa-bomb","fa fa-leaf",
-"fa fa-bomb","fa fa-bolt","fa fa-bicycle","fa fa-paper-plane-o","fa fa-cube"];
+
 const restart = document.querySelector('.restart');
+
 const deck = document.querySelector(".deck");
-let move = 0;
 
 let count = document.querySelector(".move");
+
+let array = [
+	"fa fa-diamond",
+	"fa fa-paper-plane-o",
+	"fa fa-anchor",
+	"fa fa-bolt",
+	"fa fa-cube",
+	"fa fa-anchor",
+	"fa fa-leaf",
+	"fa fa-bicycle",
+	"fa fa-diamond",
+	"fa fa-bomb",
+	"fa fa-leaf",
+	"fa fa-bomb",
+	"fa fa-bolt",
+	"fa fa-bicycle",
+	"fa fa-paper-plane-o",
+	"fa fa-cube"
+];
+
+let move = 0;
+
+
 
 
 /*
  *This function close cards and shuffle the game
  */
-function reset(){
+function reset(){	
 	for(let i = 0 ; i < cards.length; i++){
 		cards[i].classList.remove("match", "open", "show");
 	}
@@ -26,8 +50,11 @@ function reset(){
 	}
 
 	move = 0;
+
 	count.innerHTML = `moves : ${move}`;
+
 	chronoStart();
+
 }
 
 
@@ -46,26 +73,29 @@ restart.addEventListener('click', reset);
  */
 
 for(let i = 0 ; i < cards.length; i++){
+
 	cards[i].addEventListener("click", function() {
+
 		cards[i].classList.add("show", "open");
+
 		const show = document.querySelectorAll(".show")
 
 			for (let j = 2; j < 17; j += 2){
 				if(show.length == j){
 
-						if(show[j-2].innerHTML === show[j-1].innerHTML){
-						show[j-2].classList.add("match");
-						show[j-1].classList.add("match");
-						show[j-2].classList.remove("show");
-						show[j-1].classList.remove("show");
-							move += 1;
-							return move;
-						;}
+					if(show[j-2].innerHTML === show[j-1].innerHTML){
+					show[j-2].classList.add("match");
+					show[j-1].classList.add("match");
+					show[j-2].classList.remove("show");
+					show[j-1].classList.remove("show");
+						move += 1;
+						return move;
+					;}
 
-						else{setTimeout(function(){show[j-2].classList.remove("show", "open");
-							show[j-1].classList.remove("show", "open")}, 500);
-							move += 1;
-							return move;};
+					else{setTimeout(function(){show[j-2].classList.remove("show", "open");
+						show[j-1].classList.remove("show", "open")}, 500);
+						move += 1;
+						return move;};
 				};
 
 			};
@@ -168,7 +198,7 @@ function chronoStop(){
 /*
  *This is Move Counter resfresh
  */
- 
+
 deck.addEventListener('click', function(){
 
 	count.innerHTML = `moves : ${move}`;
@@ -222,12 +252,15 @@ if(match.length == 16){popup();}
 
 let popup = function final(){
 	congrat.style.display = "initial";
+
 	lvl();
+
 	congrat.innerHTML = `Well done!!! <br>
 	You did it in : ${document.getElementById("chronotime").innerHTML} <br>
 	Your level is : ${level} stars <br>`;
+
 	addbutton();
-};
+}
 
 
 /*
