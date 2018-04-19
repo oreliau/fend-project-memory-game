@@ -46,7 +46,7 @@ h1 {
  * Styles for the deck of cards
  */
 
-.deck {
+.deck{
     width: 660px;
     min-height: 680px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
@@ -74,7 +74,7 @@ h1 {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
-.deck .card.open {
+.deck .card.open{
     transform: rotateY(0);
     background: #02b3e4;
     cursor: default;
@@ -84,7 +84,7 @@ h1 {
     font-size: 33px;
 }
 
-.deck .card.match {
+.deck .card.match{
     cursor: default;
     background: #02ccba;
     font-size: 33px;
@@ -115,4 +115,20 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+
+#modal{
+    position: absolute;
+    background: white;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    text-align: center;
+    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    font-family: 'Coda', cursive;
+    max-width: 100%;
+    font-weight: 300;
 }
