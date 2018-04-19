@@ -30,7 +30,12 @@ function reset(){
 	chronoStart();
 }
 
- window.addEventListener("load", reset);
+
+
+/*
+ * reset at the load of page and when you click on restart
+ */
+window.addEventListener("load", reset);
 
 restart.addEventListener('click', reset);
 
@@ -45,132 +50,26 @@ cards[i].addEventListener("click", function() {
 	cards[i].classList.add("show", "open");
 	const show = document.querySelectorAll(".show")
 
+		for (let j = 2; j < 17; j += 2){
+		if(show.length == j){
 
-	if(show.length == 2){
+				if(show[j-2].innerHTML === show[j-1].innerHTML){
+				show[j-2].classList.add("match");
+				show[j-1].classList.add("match");
+				show[j-2].classList.remove("show");
+				show[j-1].classList.remove("show");
+					move += 1;
+					return move;
+				;}
 
-		if(show[0].innerHTML === show[1].innerHTML){
-		show[0].classList.add("match");
-		show[1].classList.add("match");
-		show[0].classList.remove("show");
-		show[1].classList.remove("show");
-			move += 1;
-			return move;
-		;}
+				else{setTimeout(function(){show[j-2].classList.remove("show", "open");
+					show[j-1].classList.remove("show", "open")}, 500);
+					move += 1;
+					return move;};
+			};
 
-		else{setTimeout(function(){show[0].classList.remove("show", "open");
-			show[1].classList.remove("show", "open")}, 500);
-			move += 1;
-			return move;};
-	};
-
-	if(show.length == 4){
-
-		if(show[2].innerHTML === show[3].innerHTML){
-		show[2].classList.add("match");
-		show[3].classList.add("match");
-		show[2].classList.remove("show");
-		show[3].classList.remove("show");
-			move += 1;
-			return move;}
-
-		else{setTimeout(function(){show[2].classList.remove("show", "open");
-			show[3].classList.remove("show", "open")}, 500);
-			move += 1;
-			return move;};
-	};
-
-	if(show.length == 6){
-
-		if(show[4].innerHTML === show[5].innerHTML){
-		show[4].classList.add("match");
-		show[5].classList.add("match");
-		show[4].classList.remove("show");
-		show[5].classList.remove("show");
-			move += 1;
-			return move;}
-
-		else{setTimeout(function(){show[4].classList.remove("show", "open");
-			show[5].classList.remove("show", "open")}, 500)
-			move += 1;
-			return move;;};
-	};
-
-	if(show.length == 8){
-
-		if(show[6].innerHTML === show[7].innerHTML){
-		show[6].classList.add("match");
-		show[7].classList.add("match");
-		show[6].classList.remove("show");
-		show[7].classList.remove("show");
-			move += 1;
-			return move;}
-
-		else{setTimeout(function(){show[6].classList.remove("show", "open");
-			show[7].classList.remove("show", "open")}, 500)
-			move += 1;
-			return move;;};
-	};
-
-	if(show.length == 10){
-
-		if(show[8].innerHTML === show[9].innerHTML){
-		show[8].classList.add("match");
-		show[9].classList.add("match");
-		show[9].classList.remove("show");
-		show[8].classList.remove("show");
-			move += 1;
-			return move;}
-
-		else{setTimeout(function(){show[8].classList.remove("show", "open");
-			show[9].classList.remove("show", "open")}, 500)
-			move += 1;
-			return move;;};
-	};
-
-	if(show.length == 12){
-
-		if(show[10].innerHTML === show[11].innerHTML){
-		show[10].classList.add("match");
-		show[11].classList.add("match");
-		show[10].classList.remove("show");
-		show[11].classList.remove("show");
-			move += 1;
-			return move;}
-
-		else{setTimeout(function(){show[10].classList.remove("show", "open");
-			show[11].classList.remove("show", "open")}, 500)
-			move += 1;
-			return move;;};
-	};
-
-	if(show.length == 14){
-
-			if(show[12].innerHTML === show[13].innerHTML){
-			show[12].classList.add("match");
-			show[13].classList.add("match");
-			show[12].classList.remove("show");
-			show[13].classList.remove("show");
-				move += 1;
-				return move;}
-
-			else{setTimeout(function(){show[12].classList.remove("show", "open");
-				show[13].classList.remove("show", "open")}, 500)
-				move += 1;
-				return move;;};
-		};
-
-	if(show.length == 16){
-
-			if(show[14].innerHTML === show[15].innerHTML){
-			show[14].classList.add("match");
-			show[15].classList.add("match");
-			show[14].classList.remove("show");
-			show[15].classList.remove("show");
-				move += 1;
-				return move;
-		}
-
-		};
+};
+	
 
 
 });
@@ -191,6 +90,7 @@ function shuffle(array) {
 
     return array;
 }
+
 
  /*
   * This is timer
@@ -266,12 +166,13 @@ function chronoStop(){
 
 
 /*
- *This is Move Counter
+ *This is Move Counter resfresh
  */
 deck.addEventListener('click', function(){
 
 	count.innerHTML = `moves : ${move}`;
 	});
+
 
 /*
  *Star Rating

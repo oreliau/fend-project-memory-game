@@ -26,6 +26,14 @@
 
         	<span class="move">3</span>
 
+            <div class="utili">
+                    <span id="chronotime">0:00:00:00</span>
+                    <form name="chronoForm">
+                        <input type="button" name="startstop" value="start!" onClick="chronoStart()" />
+                        <input type="button" name="reset" value="reset!" onClick="chronoReset()" />
+                    </form>
+             </div>
+
             <div class="restart">
         		<i class="fa fa-repeat"></i>
         	</div>
@@ -81,16 +89,6 @@
                 <i class="fa fa-cube"></i>
             </li>
         </ul>
-        
-        <div class="utili">
-        <span id="chronotime">0:00:00:00</span>
-        <form name="chronoForm">
-            <input type="button" name="startstop" value="start!" onClick="chronoStart()" />
-            <input type="button" name="reset" value="reset!" onClick="chronoReset()" />
-        </form>
-
-        <p class="move">number of move</p>
-        </div>
     </div>
 
     <div class="congrat" id="modal"></div>
