@@ -13,6 +13,21 @@ let count = document.querySelector(".move");
 /*
  *This function close cards and shuffle the game
  */
+ window.addEventListener("load", function reset(){
+	for(let i = 0 ; i < cards.length; i++){
+		cards[i].classList.remove("match", "open", "show");
+	}
+
+	const rep = shuffle(array);
+
+	for(let j = 0; j < cards.length; j++){
+		const replace = document.innerHTML ="<i class =\"" + rep[j] + "\"></i>";
+		cards[j].firstElementChild.outerHTML = replace;
+	}
+
+	move = 0;
+	count.innerHTML = `number of moves : ${move}`;
+});
 
 restart.addEventListener('click', function reset(){
 	for(let i = 0 ; i < cards.length; i++){
