@@ -46,33 +46,33 @@ restart.addEventListener('click', reset);
  */
 
 for(let i = 0 ; i < cards.length; i++){
-cards[i].addEventListener("click", function() {
-	cards[i].classList.add("show", "open");
-	const show = document.querySelectorAll(".show")
+	cards[i].addEventListener("click", function() {
+		cards[i].classList.add("show", "open");
+		const show = document.querySelectorAll(".show")
 
-		for (let j = 2; j < 17; j += 2){
-		if(show.length == j){
+			for (let j = 2; j < 17; j += 2){
+				if(show.length == j){
 
-				if(show[j-2].innerHTML === show[j-1].innerHTML){
-				show[j-2].classList.add("match");
-				show[j-1].classList.add("match");
-				show[j-2].classList.remove("show");
-				show[j-1].classList.remove("show");
-					move += 1;
-					return move;
-				;}
+						if(show[j-2].innerHTML === show[j-1].innerHTML){
+						show[j-2].classList.add("match");
+						show[j-1].classList.add("match");
+						show[j-2].classList.remove("show");
+						show[j-1].classList.remove("show");
+							move += 1;
+							return move;
+						;}
 
-				else{setTimeout(function(){show[j-2].classList.remove("show", "open");
-					show[j-1].classList.remove("show", "open")}, 500);
-					move += 1;
-					return move;};
+						else{setTimeout(function(){show[j-2].classList.remove("show", "open");
+							show[j-1].classList.remove("show", "open")}, 500);
+							move += 1;
+							return move;};
+				};
+
 			};
-
-};
 	
 
 
-});
+	});
 };
 
 
@@ -168,6 +168,7 @@ function chronoStop(){
 /*
  *This is Move Counter resfresh
  */
+ 
 deck.addEventListener('click', function(){
 
 	count.innerHTML = `moves : ${move}`;
@@ -177,6 +178,7 @@ deck.addEventListener('click', function(){
 /*
  *Star Rating
  */
+
 const stars = document.querySelector(".stars");
 
 const star1 = document.querySelector(".star1").firstElementChild;
@@ -194,6 +196,7 @@ restart.addEventListener('click', function(){
 /*
  *change star if you do to much move
  */
+
 function difficult(){
     if(move > 20 && move < 30 ){
         star3.style.color = "grey";
@@ -204,7 +207,7 @@ function difficult(){
     else if (move > 40){
         star1.style.color ="grey"
     }
-};
+}
 
 
 /*
@@ -232,6 +235,7 @@ let popup = function final(){
  */
 
 let level = 0;
+
 function lvl(){
 	if (move < 20){
 		level += 3;
@@ -249,7 +253,7 @@ function lvl(){
 		level += 0;
 		return level;
 	};
-};
+}
 
 
 /*
@@ -264,7 +268,7 @@ function addbutton(){
 	congrat.appendChild(button);
 	const mybutton = document.getElementsByClassName("button");
 	button.addEventListener("click",again);
-	};
+}
 
 
 
@@ -276,4 +280,4 @@ function addbutton(){
 function again(){
 	reset();
 	congrat.style.display = "none";
-};
+}

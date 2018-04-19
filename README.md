@@ -3,18 +3,21 @@
 ## Table of Contents
 
 * [Instructions](#instructions)
+* [The Game](#Gaùe)
 * [Contributing](#contributing)
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+This is my first game project in code, it's was very long to do it, and i hope you get fun with it!
 
-To get started, open `js/app.js` and start building out the app's functionality
+## The Game
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+It's a simple memory Game in 4x4 gird. There is a timer, star evalutor for display your level and a restart button.
 
 ## Contributing
 
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+I get my function chrono on the website : https://forum.alsacreations.com/topic-5-76681-1-Chronometre-en-Javascript-demarrage-automatique.html
