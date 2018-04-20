@@ -31,6 +31,10 @@ let array = [
 
 let move = 0;
 
+const star1 = document.querySelector(".star1").firstElementChild;
+const star2 = document.querySelector(".star2").firstElementChild;
+const star3 = document.querySelector(".star3").firstElementChild;
+const stars = [star1, star2, star3];
 
 
 
@@ -38,22 +42,28 @@ let move = 0;
  *This function close cards and shuffle the game
  */
 function reset(){	
-	for(let i = 0 ; i < cards.length; i++){
-		cards[i].classList.remove("match", "open", "show");
-	}
-
 	const rep = shuffle(array);
 
-	for(let j = 0; j < cards.length; j++){
-		const replace = document.innerHTML ="<i class =\"" + rep[j] + "\"></i>";
-		cards[j].firstElementChild.outerHTML = replace;
-	}
+	for(let i = 0 ; i < cards.length; i++){
+		cards[i].classList.remove("match", "open", "show");
 
+		const replace = document.innerHTML ="<i class =\"" + rep[i] + "\"></i>";
+
+		cards[i].firstElementChild.outerHTML = replace;
+
+	};
+
+	
 	move = 0;
 
 	count.innerHTML = `moves : ${move}`;
 
 	chronoStart();
+
+	for(let j = 0; j < 3; j++){
+		stars[j].style.color = "black"
+	};
+
 
 }
 
@@ -123,16 +133,10 @@ function shuffle(array) {
 
 
  /*
-  * This is timer
+  * This is timer refresh at restart and lunch at the begining
   */
-
-var startTime = 0
-var start = 0
-var end = 0
-var diff = 0
-var timerID = 0
-
 restart.addEventListener('click', chronoStart);
+
 chronoStart();
 
 var startTime = 0
@@ -198,7 +202,6 @@ function chronoStop(){
 /*
  *This is Move Counter resfresh
  */
-
 deck.addEventListener('click', function(){
 
 	count.innerHTML = `moves : ${move}`;
@@ -206,15 +209,8 @@ deck.addEventListener('click', function(){
 
 
 /*
- *Star Rating
+ *Star Rating refresh
  */
-
-const stars = document.querySelector(".stars");
-
-const star1 = document.querySelector(".star1").firstElementChild;
-const star2 = document.querySelector(".star2").firstElementChild;
-const star3 = document.querySelector(".star3").firstElementChild;
-
 deck.addEventListener('click', function(){
 	difficult();
 });
@@ -226,7 +222,6 @@ restart.addEventListener('click', function(){
 /*
  *change star if you do to much move
  */
-
 function difficult(){
     if(move > 20 && move < 30 ){
         star3.style.color = "grey";
@@ -239,16 +234,18 @@ function difficult(){
     }
 }
 
+/*
+ *check when you finish the game
+ */
+deck.addEventListener('click', function(){
+	const match = document.querySelectorAll('.match');
+if(match.length == 16){popup();}
+});
 
 /*
  *pop up
  */
 const congrat = document.querySelector(".congrat");
-
-deck.addEventListener('click', function(){
-	const match = document.querySelectorAll('.match');
-if(match.length == 16){popup();}
-});
 
 let popup = function final(){
 	congrat.style.display = "initial";
@@ -266,7 +263,6 @@ let popup = function final(){
 /*
  * function to get the value of the level
  */
-
 let level = 0;
 
 function lvl(){
@@ -292,7 +288,6 @@ function lvl(){
 /*
  * function for creat button
  */
-
 function addbutton(){
 	const button = document.createElement('input');
 	button.type="submit";
@@ -304,12 +299,9 @@ function addbutton(){
 }
 
 
-
 /*
  * event for click on "play again"
  */
-
-
 function again(){
 	reset();
 	congrat.style.display = "none";
